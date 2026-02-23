@@ -4,6 +4,14 @@ using UserManagementAPI.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 // ------------------------------------------------------------------
+// 0. Logging setup
+// ------------------------------------------------------------------
+
+// Remove default providers and use only Console so output is clean
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
+// ------------------------------------------------------------------
 // 1. Register services
 // ------------------------------------------------------------------
 
