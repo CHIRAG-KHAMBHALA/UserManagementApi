@@ -1,0 +1,89 @@
+@baseUrl = http://localhost:5188
+@apiKey = dev-secret
+
+### GET all users (no auth needed)
+GET {{baseUrl}}/api/users
+Accept: application/json
+
+### GET user by ID
+GET {{baseUrl}}/api/users/10
+Accept: application/json
+
+### POST - create a new user
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+X-API-KEY: {{apiKey}}
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "age": 28
+}
+
+### POST - create second user
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+X-API-KEY: {{apiKey}}
+
+{
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "email": "jane@example.com",
+  "age": 25
+}
+
+### POST - test duplicate email (should return 409)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+X-API-KEY: {{apiKey}}
+
+{
+  "firstName": "Another",
+  "lastName": "Person",
+  "email": "john@example.com",
+  "age": 30
+}
+
+### POST - test validation error (should return 400)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+X-API-KEY: {{apiKey}}
+
+{
+  "firstName": "",
+  "lastName": "Doe",
+  "email": "not-a-valid-email",
+  "age": 999
+}
+
+### POST - test missing API key (should return 401)
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "User",
+  "email": "test@example.com",
+  "age": 22
+}
+
+### PUT - update user by ID
+PUT {{baseUrl}}/api/users/1
+Content-Type: application/json
+X-API-KEY: {{apiKey}}
+
+{
+  "firstName": "John",
+  "lastName": "Updated",
+  "email": "john.updated@example.com",
+  "age": 29
+}
+
+### DELETE - delete user by ID
+DELETE {{baseUrl}}/api/users/10
+X-API-KEY: {{apiKey}}
+
+### DELETE - test not found (should return 404)
+DELETE {{baseUrl}}/api/users/999
+X-API-KEY: {{apiKey}}

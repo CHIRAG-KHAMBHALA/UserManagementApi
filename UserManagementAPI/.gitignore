@@ -1,0 +1,14 @@
+## Build outputs
+bin/
+obj/
+
+## SQLite database - auto-created by EF Core on startup, no need to track
+*.db
+*.db-shm
+*.db-wal
+
+## User secrets
+*.pfx
+
+## VS Code
+.vscode/
