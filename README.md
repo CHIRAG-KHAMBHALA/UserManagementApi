@@ -41,7 +41,7 @@ UserManagementAPI/
 | PUT | `/api/users/{id}` | Yes | Update a user |
 | DELETE | `/api/users/{id}` | Yes | Delete a user |
 
-## Running the Project
+## Run Project
 
 ```bash
 git clone https://github.com/CHIRAG-KHAMBHALA/UserManagementApi.git
